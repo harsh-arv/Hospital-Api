@@ -7,7 +7,7 @@ module.exports.register = async (req, res) => {
   const { name, email, password, password_confirmation, tc } = req.body; 
   const user = await DoctorModel.findOne({ email: email });
   if (user) {
-    res.status(201).send({
+    res.status(201).send({ 
       status: "failed",
       messsage: "Email already Exist",
     });

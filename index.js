@@ -5,7 +5,7 @@ const app=express();
 
 
 app.use(express.json())
-app.use(express.urlencoded());  //read it and bodyParser too
+app.use(express.urlencoded()); 
 app.use('/',require('./routes'));
 
 // database connection
