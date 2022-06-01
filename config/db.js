@@ -1,6 +1,7 @@
 const mongoose  = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/hospitalApi',{ 
-
+// mongoose.connect('mongodb://localhost:27017/hospitalApi'
+mongoose.connect('mongodb+srv://Harsh_arv:harsh123@cluster0.wkjgb.mongodb.net/HospitalApi?retryWrites=true&w=majority'
+,{ 
     useNewUrlParser: true,
     useUnifiedTopology: true
    })

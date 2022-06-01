@@ -3,6 +3,7 @@ const PatientsReport = require("../model/patientsReportSchema");
 const Doctor=require('../model/doctorsSchema');
 module.exports.register = async (req, res) => {
   const { name, email, mobile} = req.body;
+  //add check auth to detect doc
   //finding data by using Mobile No
   const user = await PatientsModel.findOne({ mobile: mobile });
   //if exist we need return the whole data
