@@ -27,17 +27,9 @@ module.exports.register = async (req, res) => {
           await doc.save();
           const doctorId = await DoctorModel.findOne({ email: email });
 
-          //Generate JWT Token
-          const token = jwt.sign(
-            { userID: doctorId._id },
-            "qwerty0987ytrewq",
-            { expiresIn: "5d" }
-          );
-
           res.send({
             status: "success",
             messsage: "Registration Success",
-            token: token,
           });
         } catch (error) {
           console.log(error);
@@ -70,9 +62,9 @@ module.exports.login = async (req, res) => {
       if (user != null) {
         const isMatch = await bcrypt.compare(password, user.password);
         if (user.email === email && isMatch) {
-          //Generate JWT Token
+          //Generate JWT Token for 10 minutes
           const token = jwt.sign({ userID: user._id }, "qwerty0987ytrewq", {
-            expiresIn: "5d",
+            expiresIn: "600s",
           });
           res.status(200).send({
             status: "success",
@@ -99,10 +91,10 @@ module.exports.login = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    // res.send({
-    //     status: "failed",
-    //     messsage: "All fields required",
-    //   });
+    res.send({
+        status: "failed",
+        messsage: "All fields required",
+      });
   }
   return res.redirect("back");
 };

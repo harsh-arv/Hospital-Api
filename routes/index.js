@@ -37,7 +37,7 @@ router.get("/", (req, res) => {
     <li> /doctors/register > with username and password return the status with msg and JWT Tokken</li>
     <li> /doctors/login > returns the JWT to be used </li>
     <li> /patients/register > needs JWT tokken to register teh Patient</li> 
-    <li> /patients/:id/create_report</li>
+    <li> /patients/:id/create_report</li>  >> d used here should be mobile no. of patients Doctor entered at registrations time
     <li> /patients/:id/all_reports > List all the reports of a patient oldest to latest</li>
     <li> /reports/:status > List all the reports of all the patients filtered by a specific status</li>
     </ul></div>`);

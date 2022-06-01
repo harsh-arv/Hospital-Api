@@ -33,7 +33,7 @@ var checkUserAuth = async (req, res, next) => {
   if (!token) {
     res.status(401).send({
       status: "failed",
-      message: "unauthorised user no Token",
+      message: "Unauthorised User Token || Token Expired",
     });
   }
 };
