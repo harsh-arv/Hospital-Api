@@ -17,12 +17,12 @@ var checkUserAuth = async (req, res, next) => {
       req.user = await DoctorModel.findById(userID).select("-password");
       if (req.user === null) {
         // Failed if doctor doesn't exist in Doctor Model
-        res.status(400).send({
+        return res.status(400).send({
           status: "failed",
           messsage: "Unauthorised Access ",
         });
-        return
       }
+      console.log("next working");
       next();
     } catch (error) {
       return res.status(401).send({

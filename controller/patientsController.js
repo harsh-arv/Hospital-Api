@@ -6,16 +6,18 @@ module.exports.register = async (req, res) => {
   //finding data by using Mobile No
   const user = await PatientsModel.findOne({ mobile: mobile });
   //if exist we need return the whole data
-  console.log("in here");
   try {
-    if (user) { npm
+    if (user) {
+      console.log("User exist defined");
+
       res.status(200).send({
         status: user,
         messsage: "Patients already Exists",
       });
-      return;
+      
     } else {
       if (name && email && mobile) {
+        console.log("all defined");
         const patient = new PatientsModel({
           name: name,
           email: email,
@@ -26,13 +28,14 @@ module.exports.register = async (req, res) => {
           status: "success",
           messsage: "Patient Registration Success",
         });
-        return;
+        
       } else {
+        
         res.status(400).send({
           status: "failed",
           messsage: `All fields required. You entered > mobile:${mobile} name:${name} email:${email}`,
         });
-        return;
+        
       }
     }
   } catch (error) {
