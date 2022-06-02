@@ -3,12 +3,12 @@ const PatientsReport = require("../model/patientsReportSchema");
 const Doctor = require("../model/doctorsSchema");
 module.exports.register = async (req, res) => {
   const { name, email, mobile } = req.body;
-  //add check auth to detect doc
   //finding data by using Mobile No
   const user = await PatientsModel.findOne({ mobile: mobile });
   //if exist we need return the whole data
+  console.log("in here");
   try {
-    if (user) {
+    if (user) { npm
       res.status(200).send({
         status: user,
         messsage: "Patients already Exists",
@@ -30,7 +30,7 @@ module.exports.register = async (req, res) => {
       } else {
         res.status(400).send({
           status: "failed",
-          messsage: "All fields required",
+          messsage: `All fields required. You entered > mobile:${mobile} name:${name} email:${email}`,
         });
         return;
       }
@@ -41,24 +41,26 @@ module.exports.register = async (req, res) => {
       status: "failed",
       messsage: "Unable to register",
     });
-    return
+    return;
   }
 };
 
 //needs Auth-tokken of Logged-In Doctor
 module.exports.create_report = async (req, res) => {
   const { status } = req.body;
-  if(req.user===null){return redirect('back')  }
+  if (req.user === null) {
+    return redirect("back");
+  }
   const number = req.params.number;
   const user = await PatientsModel.findOne({ mobile: number });
-  
+
   //Required Status should be any of them below
   const statusAr = [
     "Negative",
     "Travelled-Quarantine",
-    "Symptoms-Quarantine", 
-    "Positive-Admit", 
-  ]; 
+    "Symptoms-Quarantine",
+    "Positive-Admit",
+  ];
 
   var result = false;
   statusAr.map((requiredStatus) => {
@@ -66,7 +68,7 @@ module.exports.create_report = async (req, res) => {
       result = true;
     }
   });
-  
+
   if (result) {
     const { name } = req.user; //DoctorName from Tokken of logged in doctor
     if (user) {
