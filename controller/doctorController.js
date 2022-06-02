@@ -66,32 +66,32 @@ module.exports.login = async (req, res) => {
           const token = jwt.sign({ userID: user._id }, "qwerty0987ytrewq", {
             expiresIn: "600s",
           });
-          res.status(200).send({
+          return res.status(200).send({
             status: "success",
             messsage: "Login Success",
             token: token,
           });
         } else {
-          res.send({
+          return res.send({
             status: "failed",
             messsage: "Email or Password is not valid",
           });
         }
       } else {
-        res.send({
+         return res.send({
           status: "failed",
           messsage: "Not Registered User",
         });
       }
     } else {
-      res.status(400).send({
+      return res.status(400).send({
         status: "failed",
         messsage: "All fields required",
       });
     }
   } catch (error) {
     console.log(error);
-    res.send({
+    return res.send({
         status: "failed",
         messsage: "All fields required",
       });
@@ -105,7 +105,7 @@ module.exports.changePassword = async (req, res) => {
 
   if (password && password_confirmation) {
     if (password !== password_confirmation) {
-      res.send({
+      return res.send({
         status: "failed",
         message: "passwod and confirm doesn't match",
       });
