@@ -2,15 +2,13 @@ const PatientsModel = require("../model/patientsSchema");
 const PatientsReport = require("../model/patientsReportSchema");
 const Doctor = require("../model/doctorsSchema");
 module.exports.register = async (req, res) => {
-  console.log(req.body);
+  console.log(req);
   const { name, email, mobile } = req.body;
   //finding data by using Mobile No
   const user = await PatientsModel.findOne({ mobile: mobile });
   //if exist we need return the whole data
   try {
     if (user) {
-      console.log("User exist defined");
-
       res.status(200).send({
         status: user,
         messsage: "Patients already Exists",
@@ -18,7 +16,6 @@ module.exports.register = async (req, res) => {
       
     } else {
       if (name && email && mobile) {
-        console.log("all defined");
         const patient = new PatientsModel({
           name: name,
           email: email,
