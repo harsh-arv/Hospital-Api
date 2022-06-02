@@ -17,7 +17,7 @@
 ## 2.)Status (You can use enums if you want to): Can be either of: [Negative, Travelled-Quarantine, Symptoms-Quarantine, PositiveAdmit] 
 ## 3.) Date
 
-#Use PostMan for all Post requests
+# Use PostMan for all Post requests
 
 # Required Routes
 ## 1. /doctors/register > with username and password return the status with message "Successfully Registrated "
