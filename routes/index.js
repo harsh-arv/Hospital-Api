@@ -34,10 +34,12 @@ router.get("/", (req, res) => {
     3.) Date </li>
 
     <h1>Required Routes</h1>
-    <li> /doctors/register > with username and password return the status with msg and JWT Tokken</li>
+    <li> /doctors/register > with username and password return the status with message "Successfully Registrated "</li>
+    <li> /loggedUser  > it will return the logged user details</li>
+    <li> /changePassword > it will allow user to change password with existed Email Id </li>
     <li> /doctors/login > returns the JWT to be used </li>
     <li> /patients/register > needs JWT tokken to register teh Patient</li> 
-    <li> /patients/:id/create_report</li>  >> d used here should be mobile no. of patients Doctor entered at registrations time
+    <li> /patients/:id/create_report  >   it will allow Doctor to create report of Patient with use of mobile no. of patients entered at registrations time</li>
     <li> /patients/:id/all_reports > List all the reports of a patient oldest to latest</li>
     <li> /reports/:status > List all the reports of all the patients filtered by a specific status</li>
     </ul></div>`);
