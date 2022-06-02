@@ -16,10 +16,15 @@
 ## 1.)Created by doctor 
 ## 2.)Status (You can use enums if you want to): Can be either of: [Negative, Travelled-Quarantine, Symptoms-Quarantine, PositiveAdmit] 
 ## 3.) Date
+
+# Use PostMan for all Post requests
+
 # Required Routes
-## 1. /doctors/register > with username and password return the status with msg and JWT Tokken
-## 2. /doctors/login > returns the JWT to be used
-## 3. /patients/register > needs JWT tokken to register teh Patient
-## 4. /patients/:id/create_report > d used here should be mobile no. of patients Doctor entered at registrations time
-## 5. /patients/:id/all_reports > List all the reports of a patient oldest to latest
-## 6. /reports/:status > List all the reports of all the patients filtered by a specific status
+## 1. /doctors/register > with username and password return the status with message "Successfully Registrated "
+## 2. /loggedUser > it will return the logged user details
+## 3. /changePassword > it will allow user to change password with existed Email Id
+## 4. /doctors/login > returns the JWT to be used
+## 5. /patients/register > needs JWT tokken to register teh Patient
+## 6. /patients/:id/create_report > it will allow Doctor to create report of Patient with use of mobile no. of patients entered at registrations time
+## 7. /patients/:id/all_reports > List all the reports of a patient oldest to latest
+## 8. /reports/:status > List all the reports of all the patients filtered by a specific status
