@@ -2,6 +2,7 @@ const PatientsModel = require("../model/patientsSchema");
 const PatientsReport = require("../model/patientsReportSchema");
 const Doctor = require("../model/doctorsSchema");
 module.exports.register = async (req, res) => {
+  console.log(req.body);
   const { name, email, mobile } = req.body;
   //finding data by using Mobile No
   const user = await PatientsModel.findOne({ mobile: mobile });
@@ -30,7 +31,6 @@ module.exports.register = async (req, res) => {
         });
         
       } else {
-        
         res.status(400).send({
           status: "failed",
           messsage: `All fields required. You entered > mobile:${mobile} name:${name} email:${email}`,
