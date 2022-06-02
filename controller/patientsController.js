@@ -13,6 +13,7 @@ module.exports.register = async (req, res) => {
         status: user,
         messsage: "Patients already Exists",
       });
+      return;
     } else {
       if (name && email && mobile) {
         const patient = new PatientsModel({
@@ -25,11 +26,13 @@ module.exports.register = async (req, res) => {
           status: "success",
           messsage: "Patient Registration Success",
         });
+        return;
       } else {
         res.status(400).send({
           status: "failed",
           messsage: "All fields required",
         });
+        return;
       }
     }
   } catch (error) {
@@ -38,6 +41,7 @@ module.exports.register = async (req, res) => {
       status: "failed",
       messsage: "Unable to register",
     });
+    return
   }
 };
 

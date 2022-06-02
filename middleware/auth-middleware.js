@@ -21,6 +21,7 @@ var checkUserAuth = async (req, res, next) => {
           status: "failed",
           messsage: "Unauthorised Access ",
         });
+        return
       }
       next();
     } catch (error) {
@@ -28,6 +29,7 @@ var checkUserAuth = async (req, res, next) => {
         status: "failed",
         message: "UnAuthorized User",
       });
+      
     }
   }
   if (!token) {
@@ -35,6 +37,7 @@ var checkUserAuth = async (req, res, next) => {
       status: "failed",
       message: "Unauthorised User Token || Token Expired",
     });
+    return
   }
 };
 module.exports = checkUserAuth;
